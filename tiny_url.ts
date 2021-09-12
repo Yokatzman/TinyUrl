@@ -62,7 +62,7 @@ app.post('/', (req: any, res: any) => {
             res.send("not a valid URL");
             return;
         }
-        res.send('cool');
+        //res.send('cool');
 
         let tiny: string = shortener(req.body.fullUrl);
 
@@ -93,15 +93,15 @@ function shortener(url: string) {
     let result: string = "";
     let length: number = url.length;
     let charCell: number = 0;
-    for (let index = 0; index < length; index = index + 4) {
+    for (let index = 0; index < length; index = index + 6) {
         let cellsLeft: number = length - index;
         let sum: number = 0;
-        if (cellsLeft < 4) {
+        if (cellsLeft < 6) {
             for (let j = 0; j < cellsLeft; j++) {
                 sum += url.charCodeAt(j + index);
             }
         } else {
-            for (let k = 0; k < 4; k++) {
+            for (let k = 0; k < 6; k++) {
                 sum += url.charCodeAt(k + index);
             }
         }
